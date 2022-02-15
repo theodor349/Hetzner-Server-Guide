@@ -11,7 +11,6 @@ Here we need to redirect the incomming call on `x.theodorrisager.dk` to the inte
 To do this we need to edit the file found here `/etc/nginx/sites-enabled/x.theodorrisager.dk`, this can be done using nano and sudo access. It will look somthing like this
 ```
 server {
-
         server_name x.theodorrisager.dk;
 
         root /var/www/x.theodorrisager.dk/html;
