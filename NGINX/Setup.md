@@ -51,4 +51,8 @@ location /app1 {
 }
 ```
 
+## Restart NGINX
+To do this write `sudo service nginx restart`.
+You might also have to turn on the firewall, this can be done using `sudo ufw enable`.
+
 That was it, now your app should be able to be accessed through HTTPS.
