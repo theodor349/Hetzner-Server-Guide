@@ -51,3 +51,5 @@ location /app1 {
         proxy_pass http://localhost:5001;
 }
 ```
+
+That was it, now you app should be able to be accessed through HTTPS.
