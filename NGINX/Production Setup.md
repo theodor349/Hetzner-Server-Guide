@@ -43,3 +43,35 @@ server {
 ```
 
 ## Webpages `app.theodorrisager.dk`
+
+```
+server {
+        server_name app.theodorrisager.dk;
+
+        location /proxy/weeklyreview/ {
+                proxy_pass http://localhost:5002/;
+        }
+
+#       location /proxy/worktracker/ {
+#               try_files $uri $uri/ =404;
+#       }
+
+        listen 443 ssl; # managed by Certbot
+        ssl_certificate /etc/letsencrypt/live/app.theodorrisager.dk/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/app.theodorrisager.dk/privkey.pem; # managed by Certbot
+        include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+        if ($host = app.theodorrisager.dk) {
+                return 301 https://$host$request_uri;
+        } # managed by Certbot
+
+        listen 80;
+
+        server_name app.theodorrisager.dk;
+        return 404; # managed by Certbot
+}
+
+```
